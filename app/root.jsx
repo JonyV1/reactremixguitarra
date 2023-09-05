@@ -4,7 +4,10 @@ import {
     Links,
     Outlet,
     Scripts,
-    LiveReload
+    LiveReload,
+    isRouteErrorResponse,
+    useRouteError,
+    Link
 } from '@remix-run/react'
 import styles from '~/styles/index.css'
 import Header from '~/components/header'
@@ -71,11 +74,28 @@ function Document({children}){
                 {children}
 
                 <Footer />
-
                 <Scripts />
                 <LiveReload />
             </body>
 
         </html>
     )
+}
+
+/*Manejo de Errores */
+
+export function ErrorBoundary() {
+    const error = useRouteError()
+
+    if (isRouteErrorResponse(error)) {
+        
+        return<Document>
+            <p className='error'>
+                {error.status} {error.statusText}
+                <Link className='error-enlace' to='/'>Tal vez quieras regresar a la pagina principal</Link>
+            </p>
+        </Document>
+
+    }
+
 }
