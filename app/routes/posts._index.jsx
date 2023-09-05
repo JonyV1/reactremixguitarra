@@ -1,4 +1,4 @@
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, Outlet } from "@remix-run/react";
 import { getPosts } from "~/models/posts.server"
 import ListadoPosts from "~/components/listado-post";
 import styles from '~/styles/blog.css'
@@ -36,6 +36,8 @@ function Blog() {
       <ListadoPosts
         posts={posts}
       />
+
+      <Outlet />
       
     </main>
   )

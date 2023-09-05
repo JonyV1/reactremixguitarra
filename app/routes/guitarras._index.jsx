@@ -1,4 +1,4 @@
-import { useLoaderData } from "@remix-run/react"
+import { useLoaderData, Outlet } from "@remix-run/react"
 import { getGuitarras } from "~/models/guitarras.server"
 import styles from '~/styles/guitarras.css';
 import ListadoGuitarras from "~/components/listado-guitarras";
@@ -43,7 +43,9 @@ function Tienda() {
 
       <ListadoGuitarras
         guitarras={guitarras}
-      />      
+      />  
+
+      <Outlet />    
 
     </main>
   )
