@@ -1,7 +1,8 @@
-import { useLoaderData, Outlet } from "@remix-run/react"
+import { useLoaderData, Outlet, useOutletContext } from "@remix-run/react"
 import { getGuitarras } from "~/models/guitarras.server"
 import styles from '~/styles/guitarras.css';
 import ListadoGuitarras from "~/components/listado-guitarras";
+import { useContext } from "react";
 
 
 export function meta() {
@@ -45,7 +46,9 @@ function Tienda() {
         guitarras={guitarras}
       />  
 
-      <Outlet />    
+      <Outlet
+        context={useOutletContext()}
+      />    
 
     </main>
   )
